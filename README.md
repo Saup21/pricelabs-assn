@@ -79,6 +79,7 @@ To get a local copy up and running follow these simple steps.
 
 ## Output
 
+- First provide the necessary data to input.json. Add an address and a pageSize. Then hit `npm start`.
 - After running the script an output.csv file will get created in the project root directory. 
 - The file will have all the formated data. 
 - Since as per the problem statement some rentNights beginDate can be before today, the size of rentNights array can be different since we are going to pick the the rentNights from today.
