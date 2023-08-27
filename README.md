@@ -84,7 +84,7 @@ To get a local copy up and running follow these simple steps.
 - The file will have all the formated data. 
 - Since as per the problem statement some rentNights beginDate can be before today, the size of rentNights array can be different since we are going to pick the the rentNights from today.
 - I have added '0's to the end of the rentNights array whose beginDate is before today. Could have added anything, even could have left it blank. It was just a personal choice. 
-- Lastly the output.csv file will get generated at the end. If I wouldn't have added the '0's at the end the for those listings whose rentNight begin from an early date, the csv would have had blank cells. Since I have added '0's, the cells would have '0' instead of a blank rentNight.
+- Lastly the output.csv file will get generated at the end. If I wouldn't have added the '0's at the end the for those listings whose rentNight began from an early date, the csv would have had blank cells. Since I have added '0's, the cells would have '0' instead of a blank rentNight.
 
 
 ---
