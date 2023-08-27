@@ -57,9 +57,14 @@ To get a local copy up and running follow these simple steps.
 
 ### Steps:
 
-1. Move to the directory.
+1. Fork the repo
+1. Clone the forked repo
     ```sh
-    cd pricelabs/
+    git clone https://github.com/<your_username>/pricelabs-assn.git
+    ```
+1. Move to the directory
+    ```sh
+    cd pricelabs-assn/
     ```
 1. Install all the packages
     ```sh
