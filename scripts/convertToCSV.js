@@ -18,6 +18,7 @@ const formatListings = listings => {
     listings.forEach(listing => {
         const csvData = {
             listingId: listing.listingId,
+            detailPageUrl: listing.detailPageUrl,
             headline: listing.propertyMetadata.headline,
             rateSummary: listing.rateSummary
         }
@@ -64,6 +65,7 @@ const convertDataToCSVData = data => {
         let obj = {
             listingId: d.listingId,
             headline: d.headline,
+            detailPageUrl: d.detailPageUrl,
         }
 
         let newRentNights = [];
@@ -96,6 +98,7 @@ const convertDataToCSVData = data => {
         let obj = {
             listingId: d.listingId,
             headline: d.headline,
+            detailPageUrl: 'https://www.vrbo.com' + d.detailPageUrl,
         }
         
         d.rentNights.forEach(rentNight => {
@@ -106,13 +109,47 @@ const convertDataToCSVData = data => {
         csvData.push(obj);
     })
 
+    let highestPayCharge = [];
+
+    csvData.forEach(d => {
+        let count = 0;
+
+        let highestPay = [];
+
+        for (const key in d) {
+            if(count >= 3 && count < 33) {
+                highestPay.push({
+                    'charge': d[key],
+                    'date': key
+                })
+            }
+
+            count++;
+
+            if(count == 33) {
+                break;
+            }
+        }
+
+        highestPay.sort(function compareFunction(a, b) { 
+            if(a.charge < b.charge) return 1;
+            if(a.charge > b.charge) return -1;
+            return 0;
+        })
+        
+        highestPayCharge.push([highestPay[0], highestPay[1], highestPay[2]]);
+    });
+
+    console.log(highestPayCharge[9]);
+
     return csvData;
 };
 
 const createCSVFile = async (csvData) => {
     let header = [
         {id: 'listingId', title: 'listingId'},
-        {id: 'headline', title: 'headline'}
+        {id: 'headline', title: 'headline'},
+        {id: 'detailPageUrl', title: 'detailPageUrl'}
     ]
 
     let nowDate = getTodaysDate();

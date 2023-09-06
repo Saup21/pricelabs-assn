@@ -10,8 +10,9 @@ const main = async () => {
         if(res === undefined) {
             throw new Error('Api Response failed');
         }
+
         // Pipe response to CSV file
-        convertToCSV(res);
+        // convertToCSV(res);
     } catch (err) {
         console.error(err.message);
     }
